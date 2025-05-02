@@ -6,6 +6,7 @@ Empowering Indian users with cutting-edge language modalities – Developed by *
   <img src="https://raw.githubusercontent.com/ParasGupta-BCA/Indica-Chat/main/image/img1.jpg" height="400px" style="margin-right: 10px;" />
   <img src="https://raw.githubusercontent.com/ParasGupta-BCA/Indica-Chat/main/image/img2.jpg" height="400px" style="margin: 0 10px;" />
   <img src="https://raw.githubusercontent.com/ParasGupta-BCA/Indica-Chat/main/image/img3.jpg" height="400px" style="margin-left: 10px;" />
+  <img src="https://raw.githubusercontent.com/ParasGupta-BCA/Indica-Chat/main/image/img3.jpg" height="400px" style="margin-left: 10px;" />
 </p>
 
 ## 📱 Download the App

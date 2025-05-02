@@ -3,9 +3,9 @@
 Empowering Indian users with cutting-edge language modalities – Developed by **Paras Gupta**.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ParasGupta-BCA/Indica-Chat/main/image/img1.jpg" height="700px" style="margin-right: 10px;" />
-  <img src="https://raw.githubusercontent.com/ParasGupta-BCA/Indica-Chat/main/image/img2.jpg" height="700px" style="margin: 0 10px;" />
-  <img src="https://raw.githubusercontent.com/ParasGupta-BCA/Indica-Chat/main/image/img3.jpg" height="700px" style="margin-left: 10px;" />
+  <img src="https://raw.githubusercontent.com/ParasGupta-BCA/Indica-Chat/main/image/img1.jpg" height="600px" style="margin-right: 10px;" />
+  <img src="https://raw.githubusercontent.com/ParasGupta-BCA/Indica-Chat/main/image/img2.jpg" height="600px" style="margin: 0 10px;" />
+  <img src="https://raw.githubusercontent.com/ParasGupta-BCA/Indica-Chat/main/image/img3.jpg" height="600px" style="margin-left: 10px;" />
 </p>
 
 ## 📱 Download the App

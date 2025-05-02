@@ -2,6 +2,10 @@
 
 Empowering Indian users with cutting-edge language modalities – Developed by **Paras Gupta**.
 
+![Indica Chat Screenshot 1](https://raw.githubusercontent.com/ParasGupta-BCA/Indica-Chat/main/image/img1.jpg)  
+![Indica Chat Screenshot 2](https://raw.githubusercontent.com/ParasGupta-BCA/Indica-Chat/main/image/img2.jpg)  
+![Indica Chat Screenshot 3](https://raw.githubusercontent.com/ParasGupta-BCA/Indica-Chat/main/image/img3.jpg)
+
 ## 📱 Download the App
 
 Want to try out Indica Chat on your Android device? Download the latest `.apk` file here:
@@ -14,9 +18,9 @@ Want to try out Indica Chat on your Android device? Download the latest `.apk` f
 
 Indica Chat is an AI-powered chat application designed to support Indian users with:
 
-- Smart replies and suggestions
-- Multi-language input capabilities
-- Seamless conversational experience
+- Smart replies and suggestions  
+- Multi-language input capabilities  
+- Seamless conversational experience  
 - Lightweight and responsive design
 
 ## 🛠️ Developer
@@ -30,4 +34,4 @@ This project is currently in public beta. Please do not redistribute or use for 
 
 ---
 
-Thank you for supporting Indian innovation 🇮🇳🚀  
+Thank you for supporting Indian innovation 🇮🇳🚀

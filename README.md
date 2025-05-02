@@ -1,6 +1,7 @@
 # Indica-Chat 🤖🇮🇳
 
-Empowering Indian users with cutting-edge language modalities – Developed by **Paras Gupta**.
+Empowering Indian users with cutting-edge language modalities – Developed by **Paras Gupta**.  
+🌐 **Live Website:** [https://parasgupta-bca.github.io/Indica-Chat/](https://parasgupta-bca.github.io/Indica-Chat/)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/ParasGupta-BCA/Indica-Chat/main/image/img1.jpg" height="400px" style="margin-right: 10px;" />

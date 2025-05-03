@@ -88,14 +88,23 @@ const screenshots = document.querySelectorAll('.screenshot');
 const dots = document.querySelectorAll('.dot');
 let currentIndex = 0;
 let autoSlideInterval;
+let isMobile = window.innerWidth <= 768;
 
 function updateCarousel(index) {
     // Remove active class from all screenshots and dots
-    screenshots.forEach(screenshot => screenshot.classList.remove('active'));
+    screenshots.forEach(screenshot => {
+        screenshot.classList.remove('active');
+        if (isMobile) {
+            screenshot.style.display = 'none';
+        }
+    });
     dots.forEach(dot => dot.classList.remove('active'));
 
     // Add active class to current screenshot and dot
     screenshots[index].classList.add('active');
+    if (isMobile) {
+        screenshots[index].style.display = 'block';
+    }
     dots[index].classList.add('active');
 
     // Update current index
@@ -107,17 +116,46 @@ function nextSlide() {
     updateCarousel(nextIndex);
 }
 
+function prevSlide() {
+    const prevIndex = (currentIndex - 1 + screenshots.length) % screenshots.length;
+    updateCarousel(prevIndex);
+}
+
 function startAutoSlide() {
+    stopAutoSlide(); // Clear any existing interval
     autoSlideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
 }
 
 function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
+    if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+    }
 }
 
+// Handle window resize
+window.addEventListener('resize', () => {
+    isMobile = window.innerWidth <= 768;
+    updateCarousel(currentIndex);
+});
+
 // Initialize carousel
-updateCarousel(0);
-startAutoSlide();
+document.addEventListener('DOMContentLoaded', () => {
+    // Preload images
+    screenshots.forEach(screenshot => {
+        const img = screenshot.querySelector('img');
+        if (img) {
+            img.onload = () => {
+                console.log('Image loaded:', img.src);
+            };
+            img.onerror = () => {
+                console.error('Error loading image:', img.src);
+            };
+        }
+    });
+
+    updateCarousel(0);
+    startAutoSlide();
+});
 
 // Add click event listeners to dots
 dots.forEach((dot, index) => {
@@ -128,9 +166,11 @@ dots.forEach((dot, index) => {
     });
 });
 
-// Pause auto-slide on hover
-carousel.addEventListener('mouseenter', stopAutoSlide);
-carousel.addEventListener('mouseleave', startAutoSlide);
+// Pause auto-slide on hover (desktop only)
+if (!isMobile) {
+    carousel.addEventListener('mouseenter', stopAutoSlide);
+    carousel.addEventListener('mouseleave', startAutoSlide);
+}
 
 // Touch events for mobile
 let touchStartX = 0;
@@ -157,8 +197,7 @@ function handleSwipe() {
             nextSlide();
         } else {
             // Swipe right
-            const prevIndex = (currentIndex - 1 + screenshots.length) % screenshots.length;
-            updateCarousel(prevIndex);
+            prevSlide();
         }
     }
 }
@@ -187,7 +226,7 @@ animateFloat();
     const nodes = [];
     let NODE_COUNT = 32;
     let MAX_DIST = 160;
-    const COLORS = ['#2ea44f', '#4CAF50', '#8b949e'];
+    const COLORS = ['#FF8C00', '#FFA500', '#8b949e'];
 
     function setNetworkDensity() {
         if (window.innerWidth >= 769) {

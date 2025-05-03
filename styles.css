@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -22,6 +23,9 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     perspective: 1000px;
+    overscroll-behavior-y: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -301,10 +305,14 @@ body {
         justify-content: flex-start;
         align-items: center;
         padding: 20px 0;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
+    
     .screenshot-carousel::-webkit-scrollbar {
         display: none;
     }
+    
     .screenshot {
         scroll-snap-align: center;
         flex: 0 0 auto;
@@ -312,15 +320,31 @@ body {
         display: block;
         margin: 0 auto;
         text-align: center;
+        touch-action: pan-x;
     }
+    
     .screenshot img {
         width: 100%;
         height: auto;
         border-radius: 16px;
+        -webkit-user-drag: none;
+        user-select: none;
     }
+    
     .dot {
         width: 12px;
         height: 12px;
+        touch-action: manipulation;
+    }
+    
+    .feature-card, .developer-card {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .cta-button, .github-button {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
     }
 }
 
@@ -500,6 +524,7 @@ footer {
 /* Smooth Scroll */
 html {
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Custom Scrollbar */

@@ -310,6 +310,8 @@ body {
         flex: 0 0 auto;
         width: 250px;
         display: block;
+        margin: 0 auto;
+        text-align: center;
     }
     .screenshot img {
         width: 100%;

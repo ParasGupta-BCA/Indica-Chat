@@ -110,25 +110,13 @@ body {
     text-shadow: 0 0 10px rgba(46, 164, 79, 0.1);
 }
 
-.cta-button {
-    display: inline-flex;
+.cta-buttons-wrapper {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
-    background: linear-gradient(45deg, var(--primary-color), #FFA500);
-    color: white;
-    padding: 15px 30px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
-}
-
-.cta-button:hover {
-    transform: translateY(-2px) translateZ(20px);
-    box-shadow: 0 8px 25px rgba(255, 140, 0, 0.4);
-    filter: brightness(1.1);
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
 }
 
 .cta-button {
@@ -147,7 +135,6 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
     min-width: 220px;
     text-align: center;
-    margin-left: 5px;
 }
 
 .cta-button i {
@@ -160,11 +147,11 @@ body {
     transform: translateY(-2px);
 }
 
+/* ✅ Make sure buttons stay full-width on small screens */
 @media (max-width: 480px) {
     .cta-button {
         width: 100%;
         font-size: 15px;
-        margin-top: 20px;
     }
 }
 

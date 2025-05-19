@@ -131,31 +131,49 @@ body {
     filter: brightness(1.1);
 }
 
-.cta-button-group {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
 .cta-buttons-wrapper {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    align-items: center;
     flex-wrap: wrap;
+    gap: 15px;
     margin-top: 20px;
 }
 
-.try-now-button {
-    background: linear-gradient(45deg, #FFA07A, #FFB347);
-    box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 220px;
+    text-align: center;
 }
 
-.try-now-button:hover {
-    transform: translateY(-2px) translateZ(20px);
-    box-shadow: 0 8px 25px rgba(255, 165, 0, 0.5);
-    filter: brightness(1.1);
+.cta-button i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.cta-button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+/* ✅ Make sure buttons stay full-width on small screens */
+@media (max-width: 480px) {
+    .cta-button {
+        width: 100%;
+        font-size: 15px;
+    }
 }
 
 /* Features Section */

@@ -131,6 +131,25 @@ body {
     filter: brightness(1.1);
 }
 
+.cta-button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.try-now-button {
+    background: linear-gradient(45deg, #FFA07A, #FFB347);
+    box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
+}
+
+.try-now-button:hover {
+    transform: translateY(-2px) translateZ(20px);
+    box-shadow: 0 8px 25px rgba(255, 165, 0, 0.5);
+    filter: brightness(1.1);
+}
+
 /* Features Section */
 .features {
     padding: 100px 0;

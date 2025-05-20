@@ -2,37 +2,47 @@
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Mouse move parallax effect - only for desktop
+if (window.innerWidth > 768) {
+    document.addEventListener('mousemove', (e) => {
+        const cards = document.querySelectorAll('.feature-card, .screenshot, .developer-card');
+        const mouseX = e.clientX / window.innerWidth - 0.5;
+        const mouseY = e.clientY / window.innerHeight - 0.5;
+    
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const cardX = rect.left + rect.width / 2;
+            const cardY = rect.top + rect.height / 2;
+    
+            const angleX = (mouseY - (cardY / window.innerHeight - 0.5)) * 5;
+            const angleY = (mouseX - (cardX / window.innerWidth - 0.5)) * -5;
+    
+            card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(5px)`;
         });
     });
-});
-
-// Mouse move parallax effect
-document.addEventListener('mousemove', (e) => {
-    const cards = document.querySelectorAll('.feature-card, .screenshot, .developer-card');
-    const mouseX = e.clientX / window.innerWidth - 0.5;
-    const mouseY = e.clientY / window.innerHeight - 0.5;
-
-    cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const cardX = rect.left + rect.width / 2;
-        const cardY = rect.top + rect.height / 2;
-
-        const angleX = (mouseY - (cardY / window.innerHeight - 0.5)) * 10;
-        const angleY = (mouseX - (cardX / window.innerWidth - 0.5)) * -10;
-
-        card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(10px)`;
+    
+    // Reset transform on mouse leave
+    document.addEventListener('mouseleave', () => {
+        const cards = document.querySelectorAll('.feature-card, .screenshot, .developer-card');
+        cards.forEach(card => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+        });
     });
-});
-
-// Reset transform on mouse leave
-document.addEventListener('mouseleave', () => {
-    const cards = document.querySelectorAll('.feature-card, .screenshot, .developer-card');
-    cards.forEach(card => {
-        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-    });
-});
+}
 
 // Animate elements on scroll
 const observerOptions = {
@@ -55,21 +65,21 @@ document.querySelectorAll('.feature-card, .screenshot, .developer-card').forEach
     observer.observe(el);
 });
 
-// Add animation classes with 3D transforms
+// Add animation classes with appropriate transforms
 document.querySelectorAll('.feature-card').forEach(card => {
     card.style.opacity = '0';
-    card.style.transform = 'translateY(20px) rotateX(10deg)';
+    card.style.transform = 'translateY(30px)';
     card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
 });
 
 document.querySelectorAll('.screenshot').forEach(screenshot => {
     screenshot.style.opacity = '0';
-    screenshot.style.transform = 'translateX(20px) rotateY(10deg)';
+    screenshot.style.transform = 'translateX(30px)';
     screenshot.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
 });
 
 document.querySelector('.developer-card').style.opacity = '0';
-document.querySelector('.developer-card').style.transform = 'translateY(20px) rotateX(10deg)';
+document.querySelector('.developer-card').style.transform = 'translateY(30px)';
 document.querySelector('.developer-card').style.transition = 'opacity 0.5s ease, transform 0.5s ease';
 
 // Add animation class
@@ -77,7 +87,7 @@ const animateClass = document.createElement('style');
 animateClass.textContent = `
     .animate {
         opacity: 1 !important;
-        transform: translate(0) rotateX(0) rotateY(0) !important;
+        transform: translate(0) !important;
     }
 `;
 document.head.appendChild(animateClass);
@@ -95,20 +105,29 @@ function updateCarousel(index) {
     screenshots.forEach(screenshot => {
         screenshot.classList.remove('active');
         if (isMobile) {
-            screenshot.style.display = 'none';
+            screenshot.style.display = 'block';
+            screenshot.style.opacity = '1';
         }
     });
     dots.forEach(dot => dot.classList.remove('active'));
 
     // Add active class to current screenshot and dot
     screenshots[index].classList.add('active');
-    if (isMobile) {
-        screenshots[index].style.display = 'block';
-    }
     dots[index].classList.add('active');
 
     // Update current index
     currentIndex = index;
+    
+    // Scroll to the active screenshot on mobile
+    if (isMobile && carousel) {
+        const activeScreenshot = screenshots[index];
+        if (activeScreenshot) {
+            carousel.scrollTo({
+                left: activeScreenshot.offsetLeft - carousel.offsetWidth / 2 + activeScreenshot.offsetWidth / 2,
+                behavior: 'smooth'
+            });
+        }
+    }
 }
 
 function nextSlide() {
@@ -202,20 +221,23 @@ function handleSwipe() {
     }
 }
 
-// Add floating animation to the hero section
-const heroContent = document.querySelector('.hero-content');
-let floatY = 0;
-let floatDirection = 1;
-
-function animateFloat() {
-    floatY += 0.1 * floatDirection;
-    if (floatY > 20) floatDirection = -1;
-    if (floatY < 0) floatDirection = 1;
-    heroContent.style.transform = `translateY(${floatY}px) translateZ(50px)`;
-    requestAnimationFrame(animateFloat);
-}
-
-animateFloat();
+// Improve button touch interactions
+document.querySelectorAll('.cta-button').forEach(button => {
+    // Add touch feedback
+    button.addEventListener('touchstart', function(e) {
+        this.style.transform = 'scale(0.98)';
+    }, { passive: true });
+    
+    button.addEventListener('touchend', function(e) {
+        this.style.transform = 'scale(1)';
+        // Small delay to ensure the click registers
+        setTimeout(() => {
+            if (this.getAttribute('href')) {
+                window.location.href = this.getAttribute('href');
+            }
+        }, 50);
+    }, { passive: true });
+});
 
 // Animated neural network for hero background
 (function() {

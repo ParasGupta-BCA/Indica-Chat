@@ -1,0 +1,2 @@
+function a(t,e){return{description:"Indica Chat is an AI-powered chatbot developed by Paras Gupta. Try it now and experience smart conversations.",favicon:"https://framerusercontent.com/assets/lkiYBcvGwGxGGwlcK5QnTKqlCM.png",robots:"max-image-preview:large",socialImage:"https://framerusercontent.com/assets/lSHdVIVsn77slMoa2gYFcfN8.png",title:"Indica Chat - AI Chat for India"}}export{a};
+//# sourceMappingURL=chunk-MAUE3JPI.mjs.map
